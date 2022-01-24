@@ -59,6 +59,8 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: sismics/docs
+          flavor: |
+            latest=${{ github.ref == 'refs/heads/master' }}
           tags: |
             type=ref,event=tag
           labels: |
@@ -76,6 +78,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
