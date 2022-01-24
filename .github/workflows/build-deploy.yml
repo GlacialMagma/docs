@@ -76,7 +76,6 @@ jobs:
             org.opencontainers.image.version = ${{ github.event_head_commit.id }}
       - 
         name: Build and push
-=======
         id: docker_build
         uses: docker/build-push-action@v2
         with:
