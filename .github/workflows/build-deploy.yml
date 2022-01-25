@@ -63,8 +63,6 @@ jobs:
           images: sismics/docs
           flavor: |
             latest=${{ github.ref == 'refs/heads/master' }}
-          tags: |
-            type=ref,event=tag
           labels: |
             org.opencontainers.image.title = Teedy
             org.opencontainers.image.description = Teedy is an open source, lightweight document management system for individuals and businesses.
