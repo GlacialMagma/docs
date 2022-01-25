@@ -34,7 +34,6 @@ jobs:
     needs: [build_and_publish]
 
     steps:
-
       - 
         name: Checkout
         uses: actions/checkout@v2
@@ -44,7 +43,6 @@ jobs:
         with:
           name: docs-web-ci.war
           path: docs-web/target
-
       - 
         name: Setup up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -62,7 +60,10 @@ jobs:
         with:
           images: sismics/docs
           flavor: |
-            latest=${{ github.ref == 'refs/heads/master' }}
+            latest=false
+          tags: |
+            type=ref,event=tag
+            type=raw,value=latest,enable=${{ github.ref != tag) 
           labels: |
             org.opencontainers.image.title = Teedy
             org.opencontainers.image.description = Teedy is an open source, lightweight document management system for individuals and businesses.
